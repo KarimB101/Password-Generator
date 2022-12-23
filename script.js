@@ -120,9 +120,15 @@ var userOptions = {
   var uppercaseConfirm = confirm("Do you want uppercase in your password");
   var numberConfirm = confirm("Do you want numbers in your password");
   var specialConfirm = confirm("Do you want special characters in your password");
-
+console.log(lowercaseConfirm)
+console.log(uppercaseConfirm)
+console.log(numberConfirm)
+console.log(specialConfirm)
 
   //if they want lowercase, then add lowercaseChars to characters
+  if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm) {
+    return window.alert("must pick character category") 
+  }
   //if they want uppercase, then add uppercaseChars to characters
   //if they want num, then add numChars to characters
   //if they want speacial, then add speacialChars to characters
