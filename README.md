@@ -26,7 +26,7 @@ THEN the password is either displayed in an alert or written to the page
 Supposed to generate password based on user inputs on character length, number, capitalization, and special characters. 
 ## Visuals
 ![genpasswebsite](https://github.com/KarimB101/Password-Generator/blob/main/images/Screenshot%202022-12-22%20234235.png)  
-image.png 
+ 
 ## License
 MIT License
 

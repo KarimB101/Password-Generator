@@ -1,98 +1,19 @@
 // Assignment code here
-var specialCharacters = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.',
-];
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-var lowerCasedCharacters = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z',
-];
-var upperCasedCharacters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-];
+var specialCharacters = "!@#$%^&*-+_=".split("");
+var numericCharacters = "123456789".split(""); 
+var lowerCasedCharacters = "abcdefghijklmnopqrstuvwxyz".split("");
+var upperCasedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+console.log(generateBtn)
 
 function generatePassword() {
 
-  
-  // Get password length with length
-var userOptions = {
 
-}
-
-
+  // Get password options
+  var passwordOption = []
+ // var characters = ["specialCharacters", "numericCharacters", "lowerCasedCharacters", "upperCasedCharacters"]
+  var password = "";
 
   //if passwordLength does NOT meet the length requirements
   //rerun the function
@@ -100,7 +21,7 @@ var userOptions = {
 
   if (Number.isNaN(passwordLength)) {
     alert("Please provide a number")
-    passwordLength = null 
+    passwordLength = null
     return
   } else if (passwordLength < 8) {
     alert("Please provide a number greater than 8")
@@ -110,49 +31,67 @@ var userOptions = {
     alert("Please provide a number less than 128")
     passwordLength = null
     return
-  } 
-    
+  }
+ 
+
   //else if passwordLength meets the length requirements
   //assk if they want to include certain characters in the password
   // userChoice ("confirm", )
-  
+
   var lowercaseConfirm = confirm("Do you want lowercase in your password");
   var uppercaseConfirm = confirm("Do you want uppercase in your password");
   var numberConfirm = confirm("Do you want numbers in your password");
   var specialConfirm = confirm("Do you want special characters in your password");
-console.log(lowercaseConfirm)
-console.log(uppercaseConfirm)
-console.log(numberConfirm)
-console.log(specialConfirm)
 
-  //if they want lowercase, then add lowercaseChars to characters
+
+  // if they do not choose options 
   if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm) {
-    return window.alert("must pick character category") 
+    window.alert("must pick at least one character option");
+  }
+  // choose all options 
+  //if they want lowercase, then add lowercaseChars to characters
+
+  if (lowercaseConfirm) {
+    passwordOption = passwordOption.concat(lowerCasedCharacters)
+    console.log(passwordOption)
   }
   //if they want uppercase, then add uppercaseChars to characters
+
+  if (uppercaseConfirm) {
+    passwordOption = passwordOption.concat(upperCasedCharacters)
+    console.log(passwordOption)
+  }
   //if they want num, then add numChars to characters
+
+  if (numberConfirm) {
+    passwordOption = passwordOption.concat(numericCharacters)
+    console.log(passwordOption)
+  }
   //if they want speacial, then add speacialChars to characters
+  if (specialConfirm) {
+    passwordOption = passwordOption.concat(specialCharacters)
+    console.log(passwordOption)
+  }
+  // console.log(writePassword (passwordOption))
 
-  console.log(passwordLength)
-
-  
-//if stat
   for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * passwordOption.length);
+    var randomValue = passwordOption[randomIndex]
+    console.log(randomIndex, randomValue)
+
 
     // var mathRandom = Math.random();
     // var randomIndex = Math.random() * characters.length
-    var randomNumber = Math.floor(Math.random() * characters.length);
-    var randomValue = characters[randomNumber]
-
+    //writePassword(passwordOption[randomValue])
     // console.log("Math.random() returns "  + mathRandom)
     // console.log("Math.random() * characters.length returns " + randomIndex)
     // console.log("Math.floor(Math.random() * characters.length returns " + randomNumber)
 
     // console.log("characters[randomNumber] returns " + characters[randomNumber] )
 
-    console.log(randomNumber, randomValue)
     //password += characters.substring(randomNumber, randomNumber +1);
     password += randomValue
+    console.log(password)
 
   }
 
